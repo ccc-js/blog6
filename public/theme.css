@@ -1,0 +1,137 @@
+html {
+  overflow-y: scroll;
+}
+
+body {
+  margin: 0;
+}
+
+pre {
+  padding: 10px;
+  background-color: #dddddd;
+  border: 1px black solid;
+}
+
+#editForm {
+  width: 100%;
+  max-width: 800px;
+}
+
+#headerTitle {
+  margin-left:200px;
+}
+
+textarea {
+  padding: 10px;
+  width: 95%;
+  height: 400px;
+  border: 1px black solid;
+}
+
+header, aside {
+  left: 0;
+  position: fixed;
+  background-color: #222222;
+  color: #eeeeee;
+  text-decoration: none;
+  text-align: left;
+}
+
+header {
+  padding: 10px;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+  vertical-align: text-top;
+}
+
+header a, header a:visited {
+  color: #eeeeee;
+  text-decoration: none;
+}
+
+aside {
+  top: 0px;
+  width: 0px;
+  height: 100%;
+  z-index: 1;
+  white-space: nowrap;
+  overflow:hidden; /* 超出界線的部分要隱藏 */
+  transition: width 0.5s;
+}
+
+aside div {
+  padding:32px 10px;
+}
+
+aside, aside a, aside a:visited, aside h1, aside h2 {
+  color: #f0f0f0;
+  font-size: 16px;
+  line-height: 180%;
+}
+
+aside ul, aside ol {
+  margin:0 10;
+  padding:0;
+  list-style-type: none;
+}
+
+.main {
+  width: 90%;
+  padding: 50px 10px;
+}
+
+.content {
+  margin: 10px auto;
+  max-width: 800px;
+}
+
+button, input {
+  height: 28px;
+}
+
+button {
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px black solid;
+  vertical-align: bottom;
+}
+
+form {
+  margin: 10 auto;
+  width: fit-content;
+}
+
+div {
+  width: 100%;
+}
+
+table {
+  border: 1px black solid;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 8px;
+  border: 1px black solid;
+}
+
+th {
+  background-color: #222222;
+  color: #f0f0f0;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: #336699;
+}
+
+label {
+  line-height: 160%;
+}
+
+@media only screen and (max-width: 700px) {
+  aside {
+    width: 0px;
+  }
+}

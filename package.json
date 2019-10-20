@@ -1,0 +1,28 @@
+{
+  "name": "blog6",
+  "version": "1.0.0",
+  "description": "A Blog System for Markdown",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "bin": {
+    "blog6": "src/app.js"
+  },
+  "keywords": [
+    "blog",
+    "markdown"
+  ],
+  "author": "ccckmit",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.8.2",
+    "koa-body": "^4.1.1",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.12.3",
+    "koa-static": "^5.0.0",
+    "md8": "^1.0.3",
+    "yargs": "^14.2.0"
+  }
+}
