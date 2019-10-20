@@ -36,7 +36,7 @@ const CONFIG = { // session 的密鑰與設定
 app.use(session(CONFIG, app)) // 啟動 koa-session 功能
 app.use(router.routes()) // 使用 koa-router 路由
 app.blog = blog
-blog.setRoot(argv.root || './')
+blog.setRoot(argv.root || process.cwd())
 blog.port = argv.port || 3000
 user.load(path.join(blog.root, 'users.json'))
 app.listen(blog.port) // 啟動 Server
