@@ -8,6 +8,19 @@ async function fileStat(file) { // 取得檔案狀態 （若不存在傳回 null
   return fstate
 }
 
+function path2html(path) {
+  let dpath = decodeURIComponent(path)
+  let parts = dpath.split('/')
+  let len = parts.length
+  let links = []
+  let ppath = []
+  for (let i=0; i<len; i++) {
+    ppath.push(parts[i])
+    links.push(`<a href="${ppath.join('/')}">${parts[i]}</a>`)
+  }
+  return links.join(' / ')
+}
+
 function layout (ctx, body, side='') { // 套用 HTML 樣板 (有 css 與 header 區塊)
   let html = `
 <html>
@@ -20,7 +33,7 @@ function layout (ctx, body, side='') { // 套用 HTML 樣板 (有 css 與 header
       <span style="position:fixed; left:10; top:0" >
         <a onclick="toggleSidebar()" style="font-size:32px">≡</a>
       </span>
-      <span id="headerTitle"></span>
+      <span id="headerTitle">${path2html(ctx.path)}</span>
       <span style="float:right">
         ${ctx.path.startsWith('/blog')&&ctx.query.op!=='edit'&&ctx.session.userId != null ? '<a href="' + ctx.path + '?op=edit">編輯</a>&nbsp;&nbsp;' : ''} 
         ${ctx.path.startsWith('/blog')&&ctx.query.op==='edit' ? '<a href="' + ctx.path + '?op=view">檢視</a>&nbsp;&nbsp;' : ''}

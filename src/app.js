@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+const fs = require('fs')
+const https = require('https')
 const Koa = require('koa')
 const KoaRouter = require('koa-router')
 const koaLogger = require('koa-logger')
@@ -37,8 +39,23 @@ app.use(session(CONFIG, app)) // 啟動 koa-session 功能
 app.use(router.routes()) // 使用 koa-router 路由
 app.blog = blog
 blog.setRoot(argv.root || process.cwd())
-blog.port = argv.port || 3000
+
+// http server
+blog.port = argv.port || 80
 user.load(path.join(blog.root, 'users.json'))
 app.listen(blog.port) // 啟動 Server
-console.log(`Blog6 run at http://localhost:${blog.port} with root ${blog.root}`)
+
+// SSL server (https)
+const options = {
+  key: fs.readFileSync(path.join(__dirname, '../ssl/private.key')),
+  cert: fs.readFileSync(path.join(__dirname, '../ssl/certificate.crt'))
+}
+blog.portSsl = argv.portssl || 443
+https.createServer(options, app.callback()).listen(blog.portSsl)
+
+console.log(`
+Blog6 host at http://localhost:${blog.port}
+      ssl  at https://localhost:${blog.portSsl}
+      root = ${blog.root}
+`)
 
