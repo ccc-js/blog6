@@ -13,6 +13,10 @@
     "blog",
     "markdown"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccc-js/blog6.git"
+  },
   "author": "ccckmit",
   "license": "MIT",
   "dependencies": {
