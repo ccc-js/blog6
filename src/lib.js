@@ -9,6 +9,7 @@ async function fileStat(file) { // 取得檔案狀態 （若不存在傳回 null
 }
 
 function path2html(path) {
+  if (!path.startsWith('/blog/')) return ''
   let dpath = decodeURIComponent(path)
   let parts = dpath.split('/')
   let len = parts.length
@@ -16,6 +17,7 @@ function path2html(path) {
   let ppath = []
   for (let i=0; i<len; i++) {
     ppath.push(parts[i])
+    if (i <= 1) continue
     links.push(`<a href="${ppath.join('/')}">${parts[i]}</a>`)
   }
   return links.join(' / ')
